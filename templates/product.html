@@ -1,0 +1,99 @@
+{% extends './base.html' %}
+{% block title %}Producto{% endblock %}
+{% block customCSS %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/product.css') }}">
+{% endblock %}
+{% block body %}
+    <!-- Asegúrate de que esto está en product.html -->
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1>{{ producto.nombre }}</h1>
+            <p>#{{ producto.id }}</p>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-md-8 offset-md-2">
+            <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{{ url_for('static', filename='uploads/' + producto['imagen']) }}" class="d-block w-100" alt="{{ producto['nombre'] }}">
+                    </div>
+                    <!-- Añadir más imágenes si es necesario -->
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Materiales</h5>
+            <ul>
+                {% for material in materiales %}
+                    <li>{{ material }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h5>Detalles</h5>
+            <ul>
+                <li>Tamaño: {{ producto.tamano }}</li>
+                <li>Color: {{ producto.color }}</li>
+                <li>Categoría: {{ producto.categoria }}</li>
+                <li>Precio: ${{ '{:,.0f}'.format(producto.precio) }}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-12">
+            <p>{{ producto.descripcion }}</p>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-12">
+            <table class="table table-bordered details-table">
+                <thead>
+                    <tr>
+                        <th>Descripción</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in detalles %}
+                        <tr>
+                            <td>{{ item.descripcion }}</td>
+                            <td>{{ item.cantidad }}</td>
+                            <td>${{ '{:,.0f}'.format(item.precio) }}</td>
+                            <td>${{ '{:,.0f}'.format(item.total) }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-end">Subtotal</td>
+                        <td>${{ '{:,.0f}'.format(subtotal) }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="text-end">Discount (21%)</td>
+                        <td>-${{ '{:,.0f}'.format(descuento) }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="text-end fw-bold">Total</td>
+                        <td class="fw-bold">${{ '{:,.0f}'.format(total) }}</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
