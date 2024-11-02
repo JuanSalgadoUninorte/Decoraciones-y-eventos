@@ -9,7 +9,7 @@
         <div class="carousel-inner">
             {% for banner in banners %}
                 <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
-                    <img src="{{ url_for('static', filename='uploads/' + banner[5]) }}" width="100"
+                    <img src="{{ url_for('static', filename='img/' + banner[5]) }}" width="100"
                          class="d-block w-100" alt="Wedding Decoration 1">
                     <div class="banner-content">
                         <h1>{{ banner[2] }}</h1>
@@ -41,7 +41,7 @@
                                 <div class="col-md-3 mb-3">
                                     <a href="{{ url_for('producto', producto_id=productos[j][0]) }}">
                                         <div class="card h-100">
-                                            <img src="{{ url_for('static', filename='uploads/' + productos[j][9]) }}"
+                                            <img src="{{ url_for('static', filename='img/' + productos[j][9]) }}"
                                                  style="width: 304px; height: 200px; object-fit: cover;">
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ productos[j][1] }}</h5>
@@ -85,7 +85,7 @@
                             {% for j in range(i, i + items_per_carousel) %}
                                 {% if j < total_categorias %}
                                     <div class="col-4 col-md-2 mb-3 text-center">
-                                        <img src="{{ url_for('static', filename='uploads/' + categorias[j][3]) }}"
+                                        <img src="{{ url_for('static', filename='img/' + categorias[j][3]) }}"
                                              alt="{{ categorias[j][1] }}"
                                              class="category-icon">
                                         <p>{{ categorias[j][1] }}</p>
@@ -121,7 +121,7 @@
                                     <div class="card mb-3 mx-2" style="max-width: 540px;">
                                         <div class="row g-0">
                                             <div class="col-md-4">
-                                                <img src="{{ url_for('static', filename='uploads/' + comentarios[j][3]) }}"
+                                                <img src="{{ url_for('static', filename='img/' + comentarios[j][3]) }}"
                                                      alt="{{ comentarios[j][3] }}" class="img-fluid rounded-start"
                                                      style="width: 168px; height: 168px; object-fit: cover;">
                                             </div>

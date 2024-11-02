@@ -13,8 +13,7 @@ app = Flask(__name__)
 csrf = CSRFProtect()
 db = MySQL(app)
 login_manager_app = LoginManager(app)
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16 MB
-os.makedirs(os.path.join('src', 'static', 'uploads'), exist_ok=True)
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 @login_manager_app.user_loader
 def load_user(id):
     return ModelUser.get_by_id(db, id)
@@ -112,7 +111,7 @@ def add_product():
         foto = request.files['imagen']
         if foto:
             if foto.filename.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
-                foto_path = os.path.join('src', 'static', 'uploads', foto.filename)
+                foto_path = os.path.join('static', 'img', foto.filename)
                 print("Archivo recibido: ", foto.filename)
                 print("Ruta donde se guardará: ", os.path.abspath(foto_path))
                 foto.save(foto_path)
@@ -140,7 +139,7 @@ def add_category():
             
             if foto.filename.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
                 
-                foto_path = os.path.join('src', 'static', 'uploads', foto.filename)
+                foto_path = os.path.join('img', foto.filename)
                 print("Archivo recibido: ", foto.filename) 
                 print("Ruta donde se guardará: ", os.path.abspath(foto_path))
                 foto.save(foto_path)
@@ -166,7 +165,7 @@ def add_banner():
         primer_mensaje = request.form['primer-mensaje']
         if foto:
             if foto.filename.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
-                foto_path = os.path.join('src', 'static', 'uploads', foto.filename)
+                foto_path = os.path.join('img', foto.filename)
                 print("Archivo recibido: ", foto.filename) 
                 print("Ruta donde se guardará: ", os.path.abspath(foto_path))
                 foto.save(foto_path)
@@ -207,7 +206,7 @@ def comment_above_us():
         foto = request.files['imagen']
         if foto:
             if foto.filename.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
-                foto_path = os.path.join('src', 'static', 'uploads', foto.filename)
+                foto_path = os.path.join('img', foto.filename)
                 print("Archivo recibido: ", foto.filename)
                 print("Ruta donde se guardará: ", os.path.abspath(foto_path))
                 foto.save(foto_path)
@@ -318,7 +317,7 @@ def update_category():
         foto = request.files['imagen']
         if foto:
             if foto.filename.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
-                foto_path = os.path.join('src', 'static', 'uploads', foto.filename)
+                foto_path = os.path.join('img', foto.filename)
                 print("Archivo recibido: ", foto.filename)
                 print("Ruta donde se guardará: ", os.path.abspath(foto_path))
                 foto.save(foto_path)
@@ -369,7 +368,7 @@ def edit_product():
         foto = request.files['imagen']
         if foto:
             if foto.filename.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
-                foto_path = os.path.join('src', 'static', 'uploads', foto.filename)
+                foto_path = os.path.join('static', 'img', foto.filename)
                 print("Archivo recibido: ", foto.filename)
                 print("Ruta donde se guardará: ", os.path.abspath(foto_path))
                 foto.save(foto_path)
@@ -398,7 +397,7 @@ def edit_banner():
         primer_mensaje = request.form['primer-mensaje']
         if foto:
             if foto.filename.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
-                foto_path = os.path.join('src', 'static', 'uploads', foto.filename)
+                foto_path = os.path.join('img', foto.filename)
                 print("Archivo recibido: ", foto.filename)
                 print("Ruta donde se guardará: ", os.path.abspath(foto_path))
                 foto.save(foto_path)

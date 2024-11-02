@@ -59,7 +59,7 @@
                     <tbody id="categoriaTabla"></tbody>
                     {% for categoria in categorias %}
                         <tr>
-                            <td><img src="{{ url_for('static', filename='uploads/' + categoria[3]) }}" width="100"></td>
+                            <td><img src="{{ url_for('static', filename='img/' + categoria[3]) }}" width="100"></td>
                             <td>{{ categoria[1] }}</td>
                             <td>{{ categoria[2] }}</td>
                             <td>
@@ -170,7 +170,7 @@
                     <tbody id="productoTabla"></tbody>
                     {% for producto in productos %}
                         <tr>
-                            <td><img src="{{ url_for('static', filename='uploads/' + producto[9]) }}" width="100"></td>
+                            <td><img src="{{ url_for('static', filename='img/' + producto[9]) }}" width="100"></td>
                             <td>{{ producto[1] }}</td>
                             <td>{{ producto[2] }}</td>
                             <td>{{ producto[3] }}</td>
@@ -326,7 +326,7 @@
                     <tbody id="bannerTabla"></tbody>
                     {% for banner in banners %}
                         <tr>
-                            <td><img src="{{ url_for('static', filename='uploads/' + banner[5]) }}" width="100"></td>
+                            <td><img src="{{ url_for('static', filename='img/' + banner[5]) }}" width="100"></td>
                             <td>{{ banner[1] }}</td>
                             <td>{{ banner[2] }}</td>
                             <td>{{ banner[3] }}</td>
